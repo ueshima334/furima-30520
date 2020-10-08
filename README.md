@@ -63,9 +63,6 @@
 
 | Column       | Type       | options                        |
 | ------------ | ---------- | ------------------------------ |
-| card_number  | integer    | null: false                    |
-| deadline     | integer    | null: false                    |
-| code         | integer    | null: false                    |
 | postal_code  | integer    | null: false                    |
 | prefecture   | integer    | null: false                    |
 | city         | string     | null: false                    |
