@@ -63,12 +63,12 @@
 
 | Column       | Type       | options                        |
 | ------------ | ---------- | ------------------------------ |
-| postal_code  | integer    | null: false                    |
+| postal_code  | string     | null: false                    |
 | prefecture   | integer    | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone_number | integer    | null: false                    |
+| phone_number | string     | null: false                    |
 | buyer        | references | null: false, foreign_key: true |
 
 - belongs_to :buyer
