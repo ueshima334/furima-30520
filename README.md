@@ -34,8 +34,7 @@
 
 - belongs_to :user
 - has_many   :comments
-- has_many :buyers
-
+- has_one    :buyer
 
 ## comments テーブル
 
@@ -58,7 +57,7 @@
 
 - belongs_to :user
 - belongs_to :product
-- has_one :buyer_date
+- has_one    :buyer_date
 
 ## buyer_dates テーブル
 
