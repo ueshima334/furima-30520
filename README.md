@@ -20,17 +20,17 @@
 
 ## products テーブル
 
-| Column          | Type      | Options                       |
-| --------------- | --------- | ----------------------------- |
-| title           | string    | null: false                   |
-| details         | text      | null: false                   |
-| category        | integer   | null: false                   |
-| status          | integer   | null: false                   |
-| delivery_charge | integer   | null: false                   |
-| area            | integer   | null: false                   |
-| days            | integer   | null: false                   |
-| price           | integer   | null: false                   |
-| user            | reference | null: false,foreign_key: true |
+| Column             | Type      | Options                       |
+| ------------------ | --------- | ----------------------------- |
+| title              | string    | null: false                   |
+| details            | text      | null: false                   |
+| category_id        | integer   | null: false                   |
+| status_id          | integer   | null: false                   |
+| delivery_charge_id | integer   | null: false                   |
+| area_id            | integer   | null: false                   |
+| days_id            | integer   | null: false                   |
+| price              | integer   | null: false                   |
+| user               | reference | null: false,foreign_key: true |
 
 - belongs_to :user
 - has_many   :comments
