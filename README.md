@@ -15,6 +15,7 @@
 
 - has_many :products
 - has_many :comments
+- has_many :buyers
 
 
 ## products テーブル
@@ -23,16 +24,17 @@
 | --------------- | --------- | ----------------------------- |
 | title           | string    | null: false                   |
 | details         | text      | null: false                   |
-| category        | string    | null: false                   |
-| status          | string    | null: false                   |
+| category        | integer   | null: false                   |
+| status          | integer   | null: false                   |
 | delivery_charge | integer   | null: false                   |
-| area            | string    | null: false                   |
-| days            | string    | null: false                   |
+| area            | integer   | null: false                   |
+| days            | integer   | null: false                   |
 | price           | integer   | null: false                   |
 | user            | reference | null: false,foreign_key: true |
 
 - belongs_to :user
 - has_many   :comments
+- has_many :buyers
 
 
 ## comments テーブル
@@ -41,7 +43,36 @@
 | -------- | ---------- | ------------------------------ |
 | text     | string     | null: false                    |
 | user     | references | null: false, foreign_key: true |
-| products | references | null: false, foreign_key: true |
+| product  | references | null: false, foreign_key: true |
 
 - belongs_to :user
 - belongs_to :product
+
+
+## buyers テーブル
+
+| Column   | Type       | options                        |
+| -------- | ---------- | ------------------------------ |
+| user     | references | null: false, foreign_key: true |
+| product  | references | null: false, foreign_key: true |
+
+- belongs_to :user
+- belongs_to :product
+- has_one :buyer_date
+
+## buyer_dates テーブル
+
+| Column       | Type       | options                        |
+| ------------ | ---------- | ------------------------------ |
+| card_number  | integer    | null: false                    |
+| deadline     | integer    | null: false                    |
+| code         | integer    | null: false                    |
+| postal_code  | integer    | null: false                    |
+| prefecture   | integer    | null: false                    |
+| city         | string     | null: false                    |
+| address      | string     | null: false                    |
+| building     | string     |                                |
+| phone_number | integer    | null: false                    |
+| buyer        | references | null: false, foreign_key: true |
+
+- belongs_to :buyer
