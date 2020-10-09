@@ -56,6 +56,7 @@ gem 'devise'
 
 group :development do
   gem 'rubocop', require: false
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :production do
