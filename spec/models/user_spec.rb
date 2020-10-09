@@ -14,11 +14,14 @@ RSpec.describe 'ユーザー新規登録', type: :system do
     context '新規登録に失敗する時' do
       it "ニックネームが空欄の時、登録に失敗する" do
         @user.nickname = ""
-        @user
-        expect(@user.errors.full_messages).to include("NickName can't be blank")
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Nickname 名前を入力してください")
       end
 
       it "メールアドレスが空欄の時、登録に失敗する" do
+        @user.email = ""
+      
       end
       
     
