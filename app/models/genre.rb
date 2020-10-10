@@ -1,2 +1,2 @@
-class Genre < ApplicationRecord
+class Genre < ActiveHash::Base
 end
