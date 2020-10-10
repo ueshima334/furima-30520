@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+
   belongs_to :user
   belongs_to_active_hash :category
   belongs_to_active_hash :status
@@ -8,13 +8,13 @@ class Product < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :days
 
-  validats :title,              presence: true
-  validats :details,            presence: true
-  validats :category_id,        presence: true
-  validats :status_id,          presence: true
-  validats :delivery_charge_id, presence: true
-  validats :area_id,            presence: true
-  validats :days_id,            presence: true
-  validats :price,              presence: true
+  validates :title,              presence: true
+  validates :details,            presence: true
+  validates :category_id,        presence: true
+  validates :status_id,          presence: true
+  validates :delivery_charge_id, presence: true
+  validates :area_id,            presence: true
+  validates :days_id,            presence: true
+  validates :price,              presence: true
 
 end
