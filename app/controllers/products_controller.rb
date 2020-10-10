@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product_errors = Product.new
   end
 
   def create
@@ -11,6 +12,8 @@ class ProductsController < ApplicationController
     if product.save
       redirect_to root_path
     else
+      @product_errors = Product.new
+      @product_errors = product
       @product = Product.new
       render :new
     end
