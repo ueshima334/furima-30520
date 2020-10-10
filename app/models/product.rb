@@ -9,13 +9,13 @@ class Product < ApplicationRecord
   belongs_to_active_hash :days
   has_one_attached :image
 
-  validates :title,              presence: true
-  validates :details,            presence: true
-  validates :category_id,        presence: true
-  validates :status_id,          presence: true
-  validates :delivery_charge_id, presence: true
-  validates :area_id,            presence: true
-  validates :days_id,            presence: true
-  validates :price,              presence: true
+  validates :title,              presence: { message: 'を入力してください' }
+  validates :details,            presence: { message: 'を入力してください' }
+  validates :category_id,        numericality: { other_than: 1,message: 'を入力してください' }
+  validates :status_id,          numericality: { other_than: 1,message: 'を入力してください' }
+  validates :delivery_charge_id, numericality: { other_than: 1,message: 'を入力してください' }
+  validates :area_id,            numericality: { other_than: 1,message: 'を入力してください' }
+  validates :days_id,            numericality: { other_than: 1,message: 'を入力してください' }
+  validates :price,              presence: { message: 'を入力してください' }
 
 end
