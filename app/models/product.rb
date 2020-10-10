@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :area
   belongs_to_active_hash :days
+  has_one_attached :image
 
   validates :title,              presence: true
   validates :details,            presence: true
