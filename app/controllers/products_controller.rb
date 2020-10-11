@@ -3,8 +3,13 @@ class ProductsController < ApplicationController
   end
 
   def new
+    if user_signed_in?
     @product = Product.new
     @product_errors = Product.new
+    else
+    redirect_to new_user_session_path
+    end
+
   end
 
   def create
