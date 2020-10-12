@@ -132,7 +132,6 @@ RSpec.describe 'ユーザー新規登録', type: :system do
         expect(@user.errors.full_messages).to include('First name kana を入力してください')
       end
 
-
       it '生年月日が空欄の時、登録できない' do
         @user.birthday = ''
         @user.valid?
