@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,only: [:new]
-  
+  before_action :authenticate_user!, only: [:new]
+
   def index
+    @products = Product.all.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -20,11 +21,9 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+  private
 
   def product_params
-    params.require(:product).permit(:title,:details,:category_id,:status_id,:delivery_charge_id,:area_id,:days_id,:price,:image).merge(user_id:current_user.id)
+    params.require(:product).permit(:title, :details, :category_id, :status_id, :delivery_charge_id, :area_id, :days_id, :price, :image).merge(user_id: current_user.id)
   end
-
-
 end
