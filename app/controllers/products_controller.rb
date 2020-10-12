@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
     if product.save
       redirect_to root_path
     else
-      @product_errors = Product.new
       @product_errors = product
       @product = Product.new
       render :new
