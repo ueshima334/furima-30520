@@ -126,7 +126,7 @@
     <ul class='item-lists'>
 
   <% if @products.present? %>
-      <%= @products.each do |product| %>
+      <% @products.each do |product| %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
