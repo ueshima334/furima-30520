@@ -25,6 +25,12 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   private
 
   def product_params
