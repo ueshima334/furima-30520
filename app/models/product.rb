@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :area
   belongs_to_active_hash :days
-  has_one_attached :image, dependent: :destroy
+  has_one_attached :image
 
   with_options numericality: { other_than: 1, message: 'を入力してください' } do
     validates :category_id
