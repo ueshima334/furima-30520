@@ -9,9 +9,7 @@ app/assets/stylesheets/items/new.css %>
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model:@product,local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error2_messages', model: f.object %>
 
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -55,9 +53,7 @@ app/assets/stylesheets/items/new.css %>
         <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
-    <%# /商品の詳細 %>
 
-    <%# 配送について %>
     <div class="items-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
@@ -110,7 +106,6 @@ app/assets/stylesheets/items/new.css %>
         </div>
       </div>
     </div>
-    <%# /販売価格 %>
 
     <%# 注意書き %>
     <div class="caution">

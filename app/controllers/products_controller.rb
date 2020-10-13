@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product_errors = Product.new
   end
 
   def update
@@ -35,6 +36,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(product)
     else
       @product = Product.find(params[:id])
+      @product_errors = product
       render :edit
     end
   end
