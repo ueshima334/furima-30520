@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else
       @product_errors = @product
-      @product = Product.find(params[:id])
       render :edit
     end
   end

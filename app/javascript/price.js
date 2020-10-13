@@ -1,5 +1,4 @@
 function price(){
-  console.log('おはよう')
   const price_form = document.getElementById("item-price");
   price_form.addEventListener('input',()=>{
     const formData = price_form.value
