@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set, only: [:edit, :show,:update]
+  before_action :set, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit]
 
   def index
@@ -37,6 +37,13 @@ class ProductsController < ApplicationController
       @product_errors = @product
       render :edit
     end
+  end
+
+  def destroy
+    if @product.destroy
+       redirect_to root_path
+    else
+      render :show
   end
 
   private
