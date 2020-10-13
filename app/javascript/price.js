@@ -1,4 +1,5 @@
 function price(){
+  console.log('おはよう')
   const price_form = document.getElementById("item-price");
   price_form.addEventListener('input',()=>{
     const formData = price_form.value
@@ -8,4 +9,4 @@ function price(){
     profit.innerHTML = Math.floor(formData * 0.9) ;
   })
 }
-window.addEventListener('pageshow',price);
+window.addEventListener("turbolinks:load",price);
