@@ -23,5 +23,7 @@ class BuyerdataController < ApplicationController
   private
 
   def buyerdata_params
-    params.require(:buyerdata).permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:current_user.id)
+    params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:current_user.id)
+
+  end
 end
