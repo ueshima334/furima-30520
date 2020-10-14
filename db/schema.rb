@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_015832) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "buyer_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "buyerdate", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_015832) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "buyer_data", "buyers"
+  add_foreign_key "buyerdate", "buyers"
   add_foreign_key "buyers", "products"
   add_foreign_key "buyers", "users"
   add_foreign_key "products", "users"

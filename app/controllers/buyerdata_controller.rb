@@ -1,6 +1,6 @@
-class BuyersController < ApplicationController
-
+class BuyerdataController < ApplicationController
   def index
+    @buyerdate = BuyerData.new
     @product = Product.find(params[:product_id])
     if !user_signed_in?
       redirect_to new_user_session_path
