@@ -9,4 +9,19 @@ class BuyerdataController < ApplicationController
     end
   end
 
+  def create
+    buyerdata = BuyerData.new(buyerdata_params)
+    if buyerdata.save
+      redirect_to root_path
+    else
+      @buyerdate = BuyerData.new
+      @product = Product.find(params[:product_id])
+      render :index
+    end 
+  end
+
+  private
+
+  def buyerdata_params
+    params.require(:buyerdata).permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:current_user.id)
 end
