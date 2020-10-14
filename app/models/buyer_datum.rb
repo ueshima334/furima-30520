@@ -1,0 +1,2 @@
+class BuyerDatum < ApplicationRecord
+end
