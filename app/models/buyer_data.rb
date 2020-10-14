@@ -3,7 +3,7 @@ class BuyerData < ApplicationRecord
   accepts_nested_attributes_for :buyer
 
   with_options presence: { message: 'を入力してください' } do
-    validates :postal_code
+    validates :postal_code,format: { with: /\A\d{3}[-]\d{4}\z/, message: 'はハイフン込み7桁の数字を入力してください' }
     validates :city
     validates :address
     validates :building

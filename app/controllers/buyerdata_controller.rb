@@ -16,6 +16,7 @@ class BuyerdataController < ApplicationController
     if buyerdata.save
       redirect_to root_path
     else
+      @buyer.destroy
       @buyerdate = BuyerData.new(buyerdata_params)
       @product = Product.find(params[:product_id])
       render :index
