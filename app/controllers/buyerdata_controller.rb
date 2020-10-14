@@ -1,5 +1,6 @@
 class BuyerdataController < ApplicationController
   def index
+    @buyer = Buyer.new
     @buyerdate = BuyerData.new
     @product = Product.find(params[:product_id])
     if !user_signed_in?
@@ -10,11 +11,12 @@ class BuyerdataController < ApplicationController
   end
 
   def create
+    @buyer = Buyer.create(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
     if buyerdata.save
       redirect_to root_path
     else
-      @buyerdate = BuyerData.new
+      @buyerdate = BuyerData.new(buyerdata_params)
       @product = Product.find(params[:product_id])
       render :index
     end 
@@ -22,8 +24,12 @@ class BuyerdataController < ApplicationController
 
   private
 
-  def buyerdata_params
-    params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:current_user.id)
-
+  def buyer_params
+    params.permit(:product_id).merge(user_id:current_user.id)
   end
+
+  def buyerdata_params
+    params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:@buyer.id)
+  end
+
 end
