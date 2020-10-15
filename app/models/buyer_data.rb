@@ -12,5 +12,5 @@ class BuyerData < ApplicationRecord
   end
     validates :prefecture_id,numericality: { other_than: 1, message: 'を入力してください' } 
 
-    validates :token, presence: true
+    validates :token, presence: { message: 'クレジットカードの情報を正しく入力してください' } 
 end

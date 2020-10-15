@@ -3,6 +3,7 @@ class BuyerdataController < ApplicationController
     @buyer = Buyer.new
     @buyerdate = BuyerData.new
     @product = Product.find(params[:product_id])
+    @product_errors = Product.new
     if !user_signed_in?
       redirect_to new_user_session_path
     elsif user_signed_in? && current_user.id == @product.user_id
@@ -14,11 +15,11 @@ class BuyerdataController < ApplicationController
     @product = Product.find(params[:product_id])
     @buyer = Buyer.create(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
-    binding.pry
     if buyerdata.save
       pay_product
       redirect_to root_path
     else
+      @product_errors = buyerdata
       @buyer.destroy
       @buyerdate = BuyerData.new(buyerdata_params)
       @product = Product.find(params[:product_id])
