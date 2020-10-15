@@ -30,7 +30,7 @@ class BuyerdataController < ApplicationController
   end
 
   def buyerdata_params
-    params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:@buyer.id)
+    params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:@buyer.id,token: params[:token])
   end
 
 end
