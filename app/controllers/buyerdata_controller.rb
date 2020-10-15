@@ -6,7 +6,7 @@ class BuyerdataController < ApplicationController
     @product_errors = Product.new
     if !user_signed_in?
       redirect_to new_user_session_path
-    elsif user_signed_in? && current_user.id == @product.user_id
+    elsif (user_signed_in? && current_user.id == @product.user_id) || Buyer.exists?(product_id:@product.id)
       redirect_to controller: :products, action: :index
     end
   end
