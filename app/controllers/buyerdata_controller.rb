@@ -11,9 +11,11 @@ class BuyerdataController < ApplicationController
   end
 
   def create
+    product = Product.find(params[:product_id])
     @buyer = Buyer.create(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
     if buyerdata.save
+      pay_product
       redirect_to root_path
     else
       @buyer.destroy
@@ -31,6 +33,15 @@ class BuyerdataController < ApplicationController
 
   def buyerdata_params
     params.permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(buyer_id:@buyer.id,token: params[:token])
+  end
+
+  def pay_product
+    Payjp.api_key = "sk_test_1edccd39b786e9de4db957d4" 
+    Payjp::Charge.create(
+      amount: product.price,
+      card: buyerdata_params[:token],
+      currency: 'jpy'
+    )
   end
 
 end
