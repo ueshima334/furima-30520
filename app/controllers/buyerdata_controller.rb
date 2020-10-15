@@ -11,7 +11,7 @@ class BuyerdataController < ApplicationController
   end
 
   def create
-    product = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id])
     @buyer = Buyer.create(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
     if buyerdata.save
@@ -38,7 +38,7 @@ class BuyerdataController < ApplicationController
   def pay_product
     Payjp.api_key = "sk_test_1edccd39b786e9de4db957d4" 
     Payjp::Charge.create(
-      amount: product.price,
+      amount: @product.price,
       card: buyerdata_params[:token],
       currency: 'jpy'
     )
