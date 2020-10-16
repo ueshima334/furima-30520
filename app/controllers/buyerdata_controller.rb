@@ -1,8 +1,9 @@
 class BuyerdataController < ApplicationController
+  before_action :find_product
+  
   def index
     @buyer = Buyer.new
     @buyerdate = BuyerData.new
-    @product = Product.find(params[:product_id])
     @product_errors = Product.new
     if !user_signed_in?
       redirect_to new_user_session_path
@@ -12,7 +13,6 @@ class BuyerdataController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @buyer = Buyer.new(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
     DataSaveService.save(@buyer, buyerdata)
@@ -28,6 +28,10 @@ class BuyerdataController < ApplicationController
   end
 
   private
+
+  def find_product
+    @product = Product.find(params[:product_id])
+  end
 
   def buyer_params
     params.permit(:product_id).merge(user_id: current_user.id)
