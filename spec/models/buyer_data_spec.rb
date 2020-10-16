@@ -47,6 +47,19 @@ RSpec.describe '出品商品の登録', type: :system do
         expect(@buyerdata.errors.full_messages).to include('Phone number を入力してください')
       end
 
+      it '電話番号にハイフンが入力されている時、購入に失敗する' do
+        @buyerdata.phone_number = '111-111-1111'
+        @buyerdata.valid?
+        expect(@buyerdata.errors.full_messages).to include('Phone number は半角数字のみで入力してください')
+      end
+
+      it '電話番号が11桁より多い時、購入に失敗する' do
+        @buyerdata.phone_number = '111111111111'
+        @buyerdata.valid?
+        expect(@buyerdata.errors.full_messages).to include('Phone number は11桁以内で入力してください')
+
+      end
+
       it 'クレジットカードの情報が保存されていない時、購入に失敗する' do
         @buyerdata.token = ''
         @buyerdata.valid?

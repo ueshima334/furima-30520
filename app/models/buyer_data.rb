@@ -8,7 +8,7 @@ class BuyerData < ApplicationRecord
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'はハイフン込み7桁の数字を入力してください' }
     validates :city
     validates :address
-    validates :phone_number
+    validates :phone_number,format:{ with:/\A[0-9]+\z/,message: 'は半角数字のみで入力してください' },length:{ maximum: 11 , message: 'は11桁以内で入力してください' }
   end
   validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
 
