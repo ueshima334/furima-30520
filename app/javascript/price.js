@@ -8,4 +8,4 @@ function price(){
     profit.innerHTML = Math.floor(formData * 0.9) ;
   })
 }
-window.addEventListener("turbolinks:load",price);
+window.addEventListener("load",price);

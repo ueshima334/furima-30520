@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
+  has_many :buyer
 
   validates :nickname,        presence: { message: 'を入力してください' }
   validates :birthday,        presence: { message: 'を入力してください' }

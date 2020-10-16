@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :days
   has_one_attached :image
+  has_one :buyer
 
   with_options numericality: { other_than: 1, message: 'を入力してください' } do
     validates :category_id
