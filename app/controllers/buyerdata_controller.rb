@@ -15,8 +15,10 @@ class BuyerdataController < ApplicationController
   def create
     @buyer = Buyer.new(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
-    DataSaveService.save(@buyer, buyerdata)
-    if buyerdata.valid? && pay_product
+    BuyerData.buyer_save(@buyer)
+    if buyerdata.valid?
+      pay_product
+      BuyerData.buyerdata_save(buyerdata)
       redirect_to root_path
     else
       @product_errors = buyerdata

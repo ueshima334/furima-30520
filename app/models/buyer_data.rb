@@ -13,4 +13,13 @@ class BuyerData < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
 
   validates :token, presence: { message: 'クレジットカードの情報を正しく入力してください' }
+ 
+  def self.buyer_save(buyer)
+    buyer.save
+  end
+
+  def self.buyerdata_save(buyerdata)
+    buyerdata.save
+  end
+
 end
