@@ -15,8 +15,7 @@ class BuyerdataController < ApplicationController
     @product = Product.find(params[:product_id])
     @buyer = Buyer.create(buyer_params)
     buyerdata = BuyerData.new(buyerdata_params)
-    if buyerdata.save
-      pay_product
+    if buyerdata.save && pay_product
       redirect_to root_path
     else
       @product_errors = buyerdata
